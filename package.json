@@ -7,6 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
+  "browserslist": [
+    "last 2 versions",
+    "iOS 8.1",
+    "Android 4.0"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
