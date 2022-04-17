@@ -113,7 +113,7 @@ add_filter( 'mce_buttons', 'mce_buttons_table' );
 ##           ##      ##
  ###### ####### #######
 */
-add_editor_style('css/editor-style.min.css');//エディタのスタイル設定
+add_editor_style('assets/css/editor-style.min.css');//エディタのスタイル設定
 function editor_class($initArray)
 {
     $initArray['body_class'] = 'wp-post visual-editor';

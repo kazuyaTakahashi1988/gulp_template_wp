@@ -1,13 +1,23 @@
 <?php
 /*
+デフォルトmeta
+*/
+define('DEFAULT_DES', 'デフォルトディスクリプション');                        //デフォルトのディスクリプション
+define('DEFAULT_KEY', 'デフォルトキーワード');                        //デフォルトのキーワード
+define('DEFAULT_IMG', get_template_directory_uri().'/assets/images/common/ogp.png');        //デフォルトのOGP・サムネイル画像
+
+/*
 パス
 */
-define('H_URL', home_url('/'));                        //ホームURL
-define('T_URL', get_template_directory_uri() . '/');   //テーマディレクトリ
-define('T_PATH', get_template_directory() . '/');      //テーマディレクトリ　サーバーパス
+define('SITE_NAME', get_bloginfo( 'name' ));           //サイトネーム及びデフォルトのタイトル
+define('HOME_URL', home_url());                        //ホームURL
+define('THEME_URL', get_template_directory_uri());   //テーマディレクトリ
+define('THEME_PATH', get_template_directory());      //テーマディレクトリ　サーバーパス
 // define('A_URL', get_theme_root_uri() . '/assets/'); //共用ファイルテーマディレクトリ
 // define('A_PATH', get_theme_root() . '/assets/');    //共用ファイルテーマディレクトリ　サーバーパス
 define('U_URL', content_url() . '/uploads/');          //メディアアップロードディレクトリ
+
+
 
 /*
 フラグ

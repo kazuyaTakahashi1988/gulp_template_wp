@@ -1,34 +1,45 @@
-<?php get_header(); ?>
-<br>
-<br>
-<br>
-<p style="text-align: center;"><?php echo '<b>記事詳細ページだよ</b>' ?></p>
-<br>
-<br>
-<br>
-
 <?php
-    $cat = get_the_category()[count(get_the_category()) - 1]; // 情報取得
-    $catId = $cat->cat_ID; // ID取得
-    $catName = $cat->name; // 名称取得
-    $catSlug = $cat->category_nicename; // スラッグ取得
-    $link = get_category_link($catId);
+$cate = get_the_category()[0]; // カテゴリー
+$args = [
+    'pageTtl' => get_the_title() . '｜' . $cate->name . '｜' . SITE_NAME, // タイトル
+    'pageDes' => wp_trim_words(get_the_content(), 135, ''), // ディスクリプション
+    'pageKey' => get_the_title() . 'のキーワード', // キーワード
+    'ogpImg' => get_the_post_thumbnail_url(), // OGP画像
+    // 'pageCss' => 'xxxx.css', // cssファイル
+    // 'pageJs' => 'xxxx.min.js', // jsファイル
+    // 'queryParam' => $_GET['query'], // クエリーパラメーター
+];
+get_header(null, $args);
 ?>
 
-<?php while ( have_posts() ) : the_post(); ?>
-    <?php the_title(); ?>
-    <?php echo $catName; ?>
-    <?php the_time('Y.m月d日'); ?>
-    <?php the_content(); ?>
-<?php endwhile; ?>
+<div class="contswrap">
+    <?php
+    /* --------------------------
+        詳細 ▽ start ▽
+    ----------------------------------- */
+    while (have_posts()) : the_post(); ?>
+        <h1><?php the_title(); ?></h1>
+        <p><?php echo $cate->name.'：'; ?></p>
+        <?php the_content(); ?>
+    <?php endwhile;
+    /* --------------------------
+        詳細 ▲ end ▲ 
+    ----------------------------------- */ ?>
+    <br><br>
+    <?php
+    /* --------------------------
+        ページャー ▽ start ▽
+    ----------------------------------- */ ?>
+    <ul>
+        <li><?php previous_post_link('%link', '&lsaquo;', TRUE, ''); ?></li>
+        <li><a href="<?php echo get_category_link($cate->cat_ID); ?>">一覧へ戻る</a>
+        </li>
+        <li><?php next_post_link('%link', '&rsaquo;', TRUE, ''); ?></li>
+    </ul>
+    <?php
+    /* --------------------------
+        ページャー ▲ end ▲ 
+    ----------------------------------- */ ?>
+</div>
 
-<ul class="pegeBottom-Navi">
-    <li class="prev-link"><?php previous_post_link('%link', '&lsaquo;', TRUE, ''); ?></li>
-    <li class="return-link"><a href="<?php echo $link; ?>">一覧へ戻る</a>
-    </li>
-    <li class="next-link"><?php next_post_link('%link', '&rsaquo;', TRUE, ''); ?></li>
-</ul>
-
-<?php include('_sidebar.php'); ?>
-
-<?php get_footer(); ?>
+<?php get_footer(null, $args); ?>

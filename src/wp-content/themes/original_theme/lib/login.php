@@ -3,10 +3,14 @@
 セキュリティ向上の為ログインURLを変更する
 WPのルート階層に以下のPHPファイルを作っておく
 
-system-login.php
+↓↓↓ system-login.php ↓↓↓
+
 <?php
 define('LOGIN_CHANGE', sha1('WordPressLoginFormChange'));
-require_once './wp-login.php';
+require_once './wp-login.php'; ?>
+
+↑↑↑ system-login.php ↑↑↑
+
 */
 
 // define( 'LOGIN_CHANGE_PAGE', 'system-login.php' );
@@ -31,6 +35,20 @@ require_once './wp-login.php';
 //         return $url;
 //     }
 // }
+//
+// 管理画面ログアウトリンクのURL設定
+// function my_admin_script() {
+//   echo '<script>
+// window.addEventListener("load", function(){
+// var tr_logout = document.getElementById("wp-admin-bar-logout").children[0];
+// var getAttrs = tr_logout.getAttribute("href").replace("wp-login.php","system-login.php");
+// tr_logout.setAttribute("href",getAttrs);
+
+// }, false);
+//   </script>'.PHP_EOL;
+// }
+// add_action('admin_print_scripts', 'my_admin_script');
+//
 // // ログアウト時のリダイレクト先の設定
 // if ( ! function_exists( 'login_change_wp_redirect' ) ) {
 //     function login_change_wp_redirect( $location, $status ) {

@@ -5,8 +5,8 @@ Smart Custom Fields フィールド定義
 function scf_meta_box($settings, $post_type, $post_id)
 {
     $slug = get_post($post_id)->post_name;	//スラッグ取得
-    /*
-        if (in_array($post_type, array('post') && $slug === 'hoge')) {  //メタボックスを追加する投稿タイプやスラッグの条件
+    /*  ↓ 記述例 ↓ 
+        if (in_array($post_type, array('post') && $slug === 'hoge')) {
             $Setting = SCF::add_setting('shop', 'カスタムフィールド');
             $Setting->add_group('shop', false, array(
                 array('type'      => 'text', //テキスト
@@ -20,42 +20,63 @@ function scf_meta_box($settings, $post_type, $post_id)
             $settings[] = $Setting;
         }
     */
-    if (in_array($post_type, array('job') )) {  //メタボックスを追加する投稿タイプやスラッグの条件
-        $Setting = SCF::add_setting('id_nam', '案件番号');
-        $Setting->add_group('id_nam', false, array(
-            array('type'      => 'text', //テキスト
-                'name'        => 'job_id',
-                'instruction' => '案件番号', //説明文
-                'notes'       => '', //注釈
-                'label'       => '', //nameの代替文字
-                'default'     => '',    //初期値
+    if (in_array($post_type, array('custompost') )) {  //メタボックスを追加する投稿タイプやスラッグの条件
+        $Setting = SCF::add_setting('ct-field-01', 'メインコンテンツ');
+        $Setting->add_group('ct-field-01', false, array(
+            array('type'      => 'wysiwyg', // タイプ
+                'name'        => 'contents', // 名前
+                'instruction' => 'wysiwygによるテキスト編集', // 説明文
+                'notes'       => '', // 注記
+                'label'       => '', // ラベル
+                'default'     => '', // 初期値
             ),
         ));
         $settings[] = $Setting;
     }
-    if (in_array($post_type, array('job') )) {  //メタボックスを追加する投稿タイプやスラッグの条件
-        $Setting = SCF::add_setting('slides', 'スライド画像');
-        $Setting->add_group('slides', true, array(
-            array('type'        => 'image', //*タイプ
-                'name'        => 'slide_img', //*名前
-                'label'       => '', //ラベル
-                'instruction' => 'スライド画像', //説明文
-                'notes'       => '', //注記
+    if (in_array($post_type, array('custompost') )) {  //メタボックスを追加する投稿タイプやスラッグの条件
+        $Setting = SCF::add_setting('slides', 'スライド画像（ループ登録）');
+        $Setting->add_group('slides', true /* ←trueでループ */, array( 
+            array('type'      => 'image',
+                'name'        => 'slide_img',
+                'instruction' => 'スライド画像',
+                'notes'       => '',
+                'label'       => '',
                 'size'        => 'full' // プレビューサイズ
             ),
+            array('type'      => 'text',
+                'name'        => 'slide_ttl',
+                'instruction' => 'スライド画像のタイトル',
+                'notes'       => '',
+                'label'       => '',
+                'default'     => '',
+            ),
+            array('type'        => 'text',
+                'name'        => 'slide_caption',
+                'instruction' => 'スライド画像のキャプション',
+                'notes'       => '',
+                'label'       => '',
+                'default'     => '',
+            )
         ));
         $settings[] = $Setting;
     }
-    if (in_array($post_type, array('job'))) {  //メタボックスを追加する投稿タイプやスラッグの条件
+    if (in_array($post_type, array('custompost'))) {  //メタボックスを追加する投稿タイプやスラッグの条件
         $Setting = SCF::add_setting('comps', '企業情報');
         $Setting->add_group('comps', false, array(
-            array('type'      => 'text', //テキスト
+            array('type'      => 'text',
                 'name'        => 'company',
-                'instruction' => '会社名', //説明文
-                'notes'       => '', //注釈
-                'label'       => '', //nameの代替文字
-                'default'     => '株式会社',    //初期値
+                'instruction' => '会社名',
+                'notes'       => '', 
+                'label'       => '',
+                'default'     => '株式会社○◻️▲',
             ),
+            array('type'      => 'text',
+                'name'        => 'addres',
+                'instruction' => '所在地',
+                'notes'       => '', 
+                'label'       => '',
+                'default'     => '○◻️▲県○◻️▲市○◻️▲町',
+            )
         ));
         $settings[] = $Setting;
     }

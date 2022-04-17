@@ -2,27 +2,28 @@
 /*━━━━━━━━━━━━━━━
 カスタム投稿宣言
 ━━━━━━━━━━━━━━━*/
+
+// ↓ 記述例 ↓ 
 //new add_custompost('postname','表示名',array(array('tax','分類','階層','一覧のカラムに追加')),エディタ,アイキャッチ,アーカイブ,'親階層');
-//new add_custompost('postname','表示名',array(array('tax','分類',TRUE,,TRUE)),FALSE,FALSE,FALSE,'');
-// new add_custompost('staff','スタッフ',array(array('occupation','職種',TRUE,TRUE)),FALSE,FALSE,FALSE,'recruit');
+//new add_custompost('postname','表示名',array(array('tax','分類',TRUE,,TRUE)),TRUE,TRUE,TRUE,'');
 new add_custompost(
-    'post-name',
-    '表示名',
-    array(array('tax-type01','タイプ名01',true,true),
-    array('tax-type02','タイプ名02',true,true),
-    array('tax-type03','タイプ名03',true,true)),
-    false,
-    true,
-    false,
+    'custompost',
+    'custom投稿',
+    array(array('tax-category01','カテゴリー名',true,true),
+    array('tax-category02','カテゴリー名02',true,true),
+    array('tax-category03','カテゴリー名03',true,true)), // tax
+    true, // editer
+    true, // thum 
+    true, // has archive
     ''
 );
 new add_custompost(
-    'post-name02',
-    '表示名',
-    false,
-    false,
-    true,
-    false,
+    'custompost02',
+    'custom投稿02',
+    false, // tax
+    false,// editer
+    true, // thum 
+    true, // has archive
     ''
 );
 

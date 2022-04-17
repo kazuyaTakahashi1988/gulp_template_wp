@@ -1,20 +1,7 @@
-
-<!-- ▼▼▼ footer start ▼▼▼ -->
-<footer id="footer" class="footer" itemscope itemtype="http://schema.org/WPFooter">
-<br>
-<br>
-<br>
-<p style="text-align: center;"><?php echo '<b>footerだよ</b>' ?></p>
-<br>
-<br>
-<br>
-</footer>
-<!-- ▲▲▲ footer end   ▲▲▲ -->
-
-<script src="<?php echo T_URL; ?>js/*****.min.js?v=<?php echo filemtime(T_PATH . 'js/*****.min.js'); ?>"></script>
-<script src="<?php echo T_URL; ?>js/*****.min.js?v=<?php echo filemtime(T_PATH . 'js/*****.min.js'); ?>"></script>
-
-<?php wp_footer(); ?>
-
+<?php
+include_once('assets/inc/load-body-footer.php'); // 共通footerの記述
+include_once('assets/inc/load-body-js.php'); // jsの記述
+wp_footer();
+?>
 </body>
 </html>

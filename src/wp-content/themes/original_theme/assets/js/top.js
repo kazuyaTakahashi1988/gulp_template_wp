@@ -1,0 +1,1 @@
+console.log('★TOP.min.js★★');
